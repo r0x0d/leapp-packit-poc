@@ -14,8 +14,7 @@ jobs:
     owner: "rolivier"
     project: "leapp-packit-poc"
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-36-x86_64
 
 - job: copr_build
   trigger: commit
@@ -23,16 +22,14 @@ jobs:
     owner: "rolivier"
     project: "leapp-packit-poc"
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-36-x86_64
 
 - job: tests
   trigger: pull_request
   identifier: tests-7to8
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-36-x86_64
     use_internal_tf: True
 
 - job: tests
@@ -40,6 +37,5 @@ jobs:
   identifier: tests-8to9
   metadata:
     targets:
-    - fedora-stable-x86_64
-    - fedora-rawhide-x86_64
+    - fedora-36-x86_64
     use_internal_tf: True

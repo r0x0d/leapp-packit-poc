@@ -1,5 +1,5 @@
 ---
-packit_instances: ["stg"]
+# packit_instances: ["stg"]
 specfile_path: hello.spec
 synced_files:
   - hello.spec
@@ -34,7 +34,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*8to9)(?!.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys;curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-7/group_oamg-leapp-epel-7.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
 
   - job: tests
     trigger: pull_request
@@ -46,7 +46,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*8to9)(.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys;curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-7/group_oamg-leapp-epel-7.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env: 
       TARGET_RELEASE: 8.6
 
@@ -60,7 +60,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*8to9)(.*e2e)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; echo 42; yum-config-manager --enable rhel-7-server-rhui-optional-rpms"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; echo 42; yum-config-manager --enable rhel-7-server-rhui-optional-rpms; curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-7/group_oamg-leapp-epel-7.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env: 
       RHUI: "aws"
 
@@ -74,7 +74,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*8to9)(?!.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys;curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-7/group_oamg-leapp-epel-7.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env: 
       TARGET_RELEASE: 8.6
 
@@ -88,7 +88,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*7to8)(.*e2e)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-8/group_oamg-leapp-epel-8.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env:
       RHUI: aws
 
@@ -102,7 +102,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*7to8)(?!.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-8/group_oamg-leapp-epel-8.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env:
       TARGET_RELEASE: "9.0"
       TARGET_KERNEL: el9
@@ -118,7 +118,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*7to8)(.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-8/group_oamg-leapp-epel-8.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env:
       TARGET_RELEASE: "9.0"
       TARGET_KERNEL: el9
@@ -134,7 +134,7 @@ jobs:
     fmf_ref: "main"
     use_internal_tf: True
     tmt_plan: "^(?!.*c2r)(?!.*sap)(?!.*7to8)(?!.*morf)"
-    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; yum install leapp"
+    tf_post_install_script: "#!/bin/sh\nsudo sed -i s/.*ssh-rsa/ssh-rsa/ /root/.ssh/authorized_keys; curl https://copr.fedorainfracloud.org/coprs/g/oamg/leapp/repo/epel-8/group_oamg-leapp-epel-8.repo --output /etc/yum.repos.d/copr_build.repo; yum install -y leapp*master*"
     env:
       LEAPP_DEVEL_TARGET_PRODUCT_TYPE: beta
       RHSM_SKU: RH00069
